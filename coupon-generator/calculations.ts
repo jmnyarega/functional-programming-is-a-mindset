@@ -4,15 +4,11 @@ import { TCoupon, TMessage, TSubscriber } from "./types";
 export const filterCoupons = (
   coupons: Array<TCoupon>,
   rank: string
-): string[] => {
-  return coupons
-    .filter((coupon) => coupon.rank === rank)
-    .map((cp) => cp.coupon);
-};
+): string[] =>
+  coupons.filter((coupon) => coupon.rank === rank).map((cp) => cp.coupon);
 
-export const getCouponRank = (subscriber: TSubscriber): string => {
-  return subscriber.rec_count >= 10 ? "best" : "good";
-};
+export const getCouponRank = (subscriber: TSubscriber): string =>
+  subscriber.rec_count >= 10 ? "best" : "good";
 
 export const generateEmail = (
   subscriber: TSubscriber,
@@ -45,10 +41,4 @@ export const prepareEmails = (
   subscribers: Array<TSubscriber>,
   goods: string[],
   bests: string[]
-): TMessage[] => {
-  let emails: TMessage[] = [];
-  for (let i = 0; i < subscribers.length; i++) {
-    emails = [...emails, generateEmail(subscribers[i], goods, bests)];
-  }
-  return emails;
-};
+): TMessage[] => subscribers.map((sub) => generateEmail(sub, goods, bests));

@@ -14,9 +14,7 @@ export const sendEmail = () => {
   const subscribers = getSubscribers();
   const emails = prepareEmails(subscribers, goodCoupons, bestCoupons);
 
-  for (let i = 0; i < emails.length; i++) {
-    console.log(emails);
-  }
+  emails.forEach((email) => console.log(email));
 };
 
 sendEmail();
