@@ -2,7 +2,7 @@
 import data from "./fixtures";
 
 // constant =>  this is an action
-import { message as emailTemplate } from "./constants";
+import { emailTemplate } from "./constants";
 
 import { filterCoupons, prepareEmails } from "./calculations";
 import { TCoupon, TSubscriber } from "./types";

@@ -1,3 +1,3 @@
-import { sendEmail } from "./coupon-generator/actions";
+import { sendEmail } from "./actions";
 
 sendEmail();

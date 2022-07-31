@@ -8,7 +8,7 @@ export interface TSubscriber {
   rec_count: number;
 }
 
-export interface TMessage {
+export interface TMail {
   from: string;
   subject: string;
   body: string;

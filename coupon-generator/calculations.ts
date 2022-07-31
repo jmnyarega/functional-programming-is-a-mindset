@@ -1,4 +1,4 @@
-import { TCoupon, TMessage, TSubscriber } from "./types";
+import { TCoupon, TMail, TSubscriber } from "./types";
 
 export const filterCoupons = (
   coupons: Array<TCoupon>,
@@ -13,13 +13,13 @@ export const generateEmail = (
   subscriber: TSubscriber,
   goods: string[],
   bests: string[],
-  emailTemplate: TMessage
-): TMessage => {
+  emailTemplate: TMail
+): TMail => {
   const rank = getCouponRank(subscriber);
-  let e_message: TMessage;
+  let email: TMail;
 
   if (rank === "best") {
-    e_message = {
+    email = {
       ...emailTemplate,
       to: subscriber.email,
       body: emailTemplate.body + " best coupons " + bests.join(", "),
@@ -27,20 +27,20 @@ export const generateEmail = (
   }
 
   if (rank === "good") {
-    e_message = {
+    email = {
       ...emailTemplate,
       to: subscriber.email,
       body: emailTemplate.body + " good coupons " + goods.join(", "),
     };
   }
 
-  return e_message;
+  return email;
 };
 
 export const prepareEmails = (
   subscribers: Array<TSubscriber>,
   goods: string[],
   bests: string[],
-  emailTemplate: TMessage
-): TMessage[] =>
+  emailTemplate: TMail
+): TMail[] =>
   subscribers.map((sub) => generateEmail(sub, goods, bests, emailTemplate));
