@@ -12,33 +12,35 @@ export const filterCoupons = (
 export const getCouponRank = (subscriber: TSubscriber): string =>
   subscriber.rec_count >= 10 ? "best" : "good";
 
+const getEmailBody = (
+  body: string,
+  bests: string[],
+  goods: string[],
+  rank: string
+): string => {
+  if (rank === "best") {
+    return `${body} best coupon ${bests.join(",")}`;
+  } else if (rank === "good") {
+    return `${body} best coupon ${goods.join(",")}`;
+  }
+  return "";
+};
+
 export const generateEmail = (
   subscriber: TSubscriber,
   goods: string[],
   bests: string[],
   emailTemplate: TMail
-): TMail => {
-  const rank = getCouponRank(subscriber);
-  let email: TMail;
-
-  if (rank === "best") {
-    email = {
-      ...emailTemplate,
-      to: subscriber.email,
-      body: emailTemplate.body + " best coupons " + bests.join(", "),
-    };
-  }
-
-  if (rank === "good") {
-    email = {
-      ...emailTemplate,
-      to: subscriber.email,
-      body: emailTemplate.body + " good coupons " + goods.join(", "),
-    };
-  }
-
-  return email;
-};
+): TMail => ({
+  ...emailTemplate,
+  to: subscriber.email,
+  body: getEmailBody(
+    emailTemplate.body,
+    bests,
+    goods,
+    getCouponRank(subscriber)
+  ),
+});
 
 export const prepareEmails = (
   subscribers: Array<TSubscriber>,
