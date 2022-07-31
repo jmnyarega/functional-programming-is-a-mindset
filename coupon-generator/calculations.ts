@@ -1,5 +1,8 @@
 import { TCoupon, TMail, TSubscriber } from "./types";
 
+// calculations defines the business rules for the application
+// Here, decisions are made
+
 export const filterCoupons = (
   coupons: Array<TCoupon>,
   rank: string

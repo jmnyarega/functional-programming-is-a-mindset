@@ -1,6 +1,10 @@
 // database
 import data from "./fixtures";
 
+// communicates with the outside world [ side effects ]
+//   - http requests
+//   - global variables
+
 // constant =>  this is an action
 import { emailTemplate } from "./constants";
 
