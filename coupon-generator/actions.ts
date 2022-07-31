@@ -24,5 +24,3 @@ export const sendEmail = () => {
 
   emails.forEach((email) => console.log(email));
 };
-
-sendEmail();
