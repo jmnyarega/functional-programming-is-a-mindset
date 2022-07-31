@@ -1,10 +1,10 @@
-[#](#) functional-programming-is-a-mindset
+# Functional Programming
 
 - I am reading [Grokking Simplicity: Taming complex software with functional
   thinking](https://www.amazon.com/Grokking-Simplicity-software-functional-thinking-ebook/dp/B09781TWFL/ref=sr_1_1?crid=2BYF4GIQ95TMB&keywords=grokking+simplicity&qid=1659261285&sprefix=grokkin%2Caps%2C553&sr=8-1)
   by Eric Normand, I thought it will be nice to document what I have learnt.
 
-### Definitions
+## Definitions
 
 #### Side Effects
 - Anything that a function does other than returning a value, i.e sending an email or modifing global state.
@@ -24,7 +24,7 @@
 - It is inert.
 - Safest
 
-### Below are a list of problems solved using FP
+## Problems
 
 - [Coupon email address](./coupon-generator)
 - MegaMart
