@@ -1,17 +1,17 @@
+import { IBuyButton } from "./types";
+
 export function set_cart_total_dom(total: number) {
-  console.log(`<p> ${total} </p>`);
-}
-export function update_shipping_icons() {
-  throw new Error("Function not implemented.");
-}
-export function update_tax_dom() {
-  throw new Error("Function not implemented.");
+  console.log(`<p> cart-total:  ${total} </p>`);
 }
 
-export function set_tax_dom(arg0: number) {
-  throw new Error("Function not implemented.");
-}
+export const set_tax_dom = (total: number) => {
+  console.log(`<p> tax: ${total} </p>`);
+};
 
-export function get_buy_buttons_dom(): any[] {
-  return [];
-}
+export const get_buy_buttons_dom = (): IBuyButton[] => [
+  {
+    item: { name: "goods", price: 1 },
+    show_free_shipping_icon: () => console.log("show free shipping icon"),
+    hide_free_shipping_icon: () => console.log("hide free shipping icon"),
+  },
+];
