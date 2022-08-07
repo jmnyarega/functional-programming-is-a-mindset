@@ -13,17 +13,14 @@ import { IBuyButton, ICart } from "./types";
 
 let shopping_cart: ICart[] = [];
 
-// action
 const set_free_shipping_icon = (button: IBuyButton, show: boolean): void => {
   show ? button.show_free_shipping_icon() : button.hide_free_shipping_icon();
 };
 
-// action
 const update_tax_dom = (total: number) => {
   set_tax_dom(calc_tax(total));
 };
 
-// action
 const update_shipping_icons = (cart: ICart[]): void => {
   const buy_buttons: IBuyButton[] = get_buy_buttons_dom();
 
@@ -36,7 +33,6 @@ const update_shipping_icons = (cart: ICart[]): void => {
   }
 };
 
-// action
 const add_item_to_cart = (name: string, price: number): void => {
   const item = make_cart_item(name, price);
 
@@ -46,6 +42,7 @@ const add_item_to_cart = (name: string, price: number): void => {
   set_cart_total_dom(total);
   update_shipping_icons(shopping_cart);
   update_tax_dom(total);
+  // update buy buttons(cart)
 };
 
 add_item_to_cart("juice", 10);

@@ -27,5 +27,5 @@
 ## Problems
 
 - [Coupon email address](./coupon-generator)
-- [Affiliate payouts exercise]((./affiliate-payouts/)
-- MegaMart
+- [Affiliate payouts exercise](./affiliate-payouts/)
+- [MegaMart](./mega-mart/)
