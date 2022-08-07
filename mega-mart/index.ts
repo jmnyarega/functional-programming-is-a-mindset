@@ -5,6 +5,7 @@ import {
   get_free_shipping_with_item,
   get_shipping_button_item,
   make_cart_item,
+  remove_item_by_name,
 } from "./calculations";
 
 import { get_buy_buttons_dom, set_cart_total_dom, set_tax_dom } from "./dom";
@@ -45,9 +46,24 @@ const add_item_to_cart = (name: string, price: number): void => {
   // update buy buttons(cart)
 };
 
-add_item_to_cart("juice", 10);
-add_item_to_cart("juice", 10);
-add_item_to_cart("juice", 10);
-add_item_to_cart("juice", 10);
-add_item_to_cart("juice", 10);
-add_item_to_cart("juice", 50);
+const delete_cart_item = (name: string): void => {
+  shopping_cart = remove_item_by_name(shopping_cart, name);
+  const total = calc_total(shopping_cart);
+
+  set_cart_total_dom(total);
+  update_shipping_icons(shopping_cart);
+  update_tax_dom(total);
+  // update buy buttons(cart)
+};
+
+add_item_to_cart("milk", 1);
+add_item_to_cart("eggs", 1);
+add_item_to_cart("soap", 1);
+add_item_to_cart("gas", 10);
+add_item_to_cart("salt", 10);
+
+delete_cart_item("milk");
+delete_cart_item("eggs");
+delete_cart_item("soap");
+delete_cart_item("gas");
+delete_cart_item("salt");
