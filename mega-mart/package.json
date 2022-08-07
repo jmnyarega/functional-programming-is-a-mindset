@@ -1,0 +1,23 @@
+{
+  "name": "functional-programming-is-a-mindset",
+  "version": "1.0.0",
+  "description": "[#](#) Functional Programming",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmnyarega/functional-programming-is-a-mindset.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmnyarega/functional-programming-is-a-mindset/issues"
+  },
+  "homepage": "https://github.com/jmnyarega/functional-programming-is-a-mindset#readme",
+  "devDependencies": {
+    "tslib": "^2.4.0"
+  }
+}
