@@ -17,7 +17,7 @@ const set_free_shipping_icon = (button: IBuyButton, show: boolean): void => {
   show ? button.show_free_shipping_icon() : button.hide_free_shipping_icon();
 };
 
-const update_tax_dom = (total: number) => {
+const update_tax_dom = (total: number): void => {
   set_tax_dom(calc_tax(total));
 };
 
