@@ -1,4 +1,4 @@
-# Functional Programming
+[#](#) Functional Programming
 
 - I am reading [Grokking Simplicity: Taming complex software with functional
   thinking](https://www.amazon.com/Grokking-Simplicity-software-functional-thinking-ebook/dp/B09781TWFL/ref=sr_1_1?crid=2BYF4GIQ95TMB&keywords=grokking+simplicity&qid=1659261285&sprefix=grokkin%2Caps%2C553&sr=8-1)
@@ -27,4 +27,5 @@
 ## Problems
 
 - [Coupon email address](./coupon-generator)
+- [Affiliate payouts exercise]((./affiliate-payouts/)
 - MegaMart

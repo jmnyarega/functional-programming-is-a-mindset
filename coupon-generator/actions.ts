@@ -9,10 +9,10 @@ import data from "./fixtures";
 import { emailTemplate } from "./constants";
 
 import { filterCoupons, prepareEmails } from "./calculations";
-import { TCoupon, TSubscriber } from "./types";
+import { TCoupon, TMail, TSubscriber } from "./types";
 
-export const getSubscribers = (): Array<TSubscriber> => data.subscribers;
-export const getCoupons = (): Array<TCoupon> => data.coupons;
+export const getSubscribers = (): TSubscriber[] => data.subscribers;
+export const getCoupons = (): TCoupon[] => data.coupons;
 
 export const sendEmail = () => {
   const coupons = getCoupons();
@@ -26,5 +26,5 @@ export const sendEmail = () => {
     emailTemplate
   );
 
-  emails.forEach((email) => console.log(email));
+  emails.forEach((email: TMail) => console.log(email));
 };

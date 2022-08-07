@@ -1,5 +1,5 @@
 export interface TCoupon {
-  coupon: string;
+  name: string;
   rank: string;
 }
 
