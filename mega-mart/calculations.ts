@@ -39,3 +39,9 @@ export const get_free_shipping_with_item = (
   cart: ICart[],
   item: ICart
 ): boolean => calc_total(add_item(cart, item)) >= 20;
+
+// @TODO
+//  - make cart to object
+//  - setPrice
+//  - setQuantity
+//  - delete
