@@ -1,3 +1,5 @@
 #! /bin/sh
 
-rm -f **/*.d.* ; rm -f **/*.js && echo done!
+rm -f src/**/*.js && rm -f src/**/*.d.*;
+
+echo done!

@@ -4,7 +4,7 @@
   "description": "Functional Programming",
   "main": "index.js",
   "scripts": {
-    "compile": "./bin/run.sh",
+    "compile": "./bin/compile.sh",
     "clean": "./bin/clean.sh"
   },
   "repository": {
