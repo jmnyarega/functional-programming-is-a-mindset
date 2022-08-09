@@ -52,3 +52,9 @@
     - Choose where the new code is written
     - Decide what level of detail is appropriate
 
+##### There are many reasons to keep the abstraction barrier minimal:
+1. If we add more code to the barrier, we have more to change when we change the implementation.
+2. Code in the barrier is lower level, so it’s more likely to contain bugs.
+3. Low-level code is harder to understand.
+4. More functions in an abstraction barrier mean more coordination between teams.
+5. A larger interface to our abstraction barrier is harder to keep in your head.
