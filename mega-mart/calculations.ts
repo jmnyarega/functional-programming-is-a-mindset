@@ -31,7 +31,7 @@ export const calc_total = (cart: ICart[]): number => {
   return total;
 };
 
-export const get_shipping_button_item = (button: IBuyButton): ICart => {
+export const get_shipping_button_item = <T>(button: IBuyButton<T>): T => {
   return button.item;
 };
 

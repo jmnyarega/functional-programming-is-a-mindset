@@ -3,8 +3,12 @@ export interface ICart {
   price: number;
 }
 
-export interface IBuyButton {
-  item: ICart;
+export interface ICart2 {
+  [name: string]: number;
+}
+
+export interface IBuyButton<T> {
+  item: T;
   show_free_shipping_icon: () => void;
   hide_free_shipping_icon: () => void;
 }

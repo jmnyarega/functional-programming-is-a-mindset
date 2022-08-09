@@ -1,7 +1,7 @@
 {
   "name": "functional-programming-is-a-mindset",
   "version": "1.0.0",
-  "description": "[#](#) Functional Programming",
+  "description": "Functional Programming",
   "main": "index.js",
   "scripts": {
     "compile": "./bin/run.sh",

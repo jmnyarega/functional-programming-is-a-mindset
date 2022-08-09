@@ -1,5 +1,15 @@
 {
   "compilerOptions": {
+    "target": "es2019",
+    "lib": [
+      "es2015",
+      "es2019",
+      "es2020.promise",
+      "es2020.bigint",
+      "es2020.string",
+      "esnext",
+      "dom"
+    ],
     "incremental": true,
     "composite": true,
     "tsBuildInfoFile": "./.tsbuildinfo",
@@ -7,7 +17,7 @@
     "disableSolutionSearching": true,
     "disableReferencedProjectLoad": true,
 
-    "module": "commonjs",
+    "module": "es2015",
     "rootDir": "./",
     "moduleResolution": "node",
     "baseUrl": "./",
@@ -59,8 +69,6 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "allowUnusedLabels": true,
-    "allowUnreachableCode": true,
-
-    "skipLibCheck": true
+    "allowUnreachableCode": true
   }
 }
