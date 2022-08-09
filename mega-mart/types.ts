@@ -5,7 +5,7 @@ export type TCart = {
 };
 
 export interface ICartObject {
-  [name: string]: TCart;
+  [key: string]: TCart;
 }
 
 export interface IBuyButton {

@@ -9,7 +9,7 @@ import {
   contains,
   make_cart_item,
   add_item,
-  set_price_by_name,
+  set_field_by_name,
   calc_total,
   get_free_shipping_with_item,
 } from "./cart";
@@ -58,21 +58,27 @@ const freeTieClip = (cart: ICartObject): ICartObject => {
   return hasTie && hasTieClip ? add_item(cart, tieClip) : cart;
 };
 
-export const add_item_to_cart = (name: string, price: number): void => {
-  const item = make_cart_item(name, price);
+export const add_item_to_cart = (
+  cart: ICartObject,
+  name: string,
+  price: number,
+  quantity?: number
+): void => {
+  const item = make_cart_item(name, price, quantity);
 
-  shopping_cart = add_item(shopping_cart, item);
-  const total = calc_total(shopping_cart);
+  const new_cart = add_item(cart, item);
+  const total = calc_total(new_cart);
 
   set_cart_total_dom(total);
-  // update_shipping_icons(shopping_cart);
+  update_shipping_icons(new_cart);
   update_tax_dom(total);
-  // update buy buttons(cart)
+
+  console.log(new_cart);
 };
 
-add_item_to_cart("shirt", 50);
-set_price_by_name(shopping_cart, "shirt", 56);
+const cart1 = set_field_by_name(shopping_cart, "tie", "price", 56);
+const cart2 = set_field_by_name(cart1, "shirt", "quantity", 10);
 
-const new_cart = freeTieClip(shopping_cart);
+const new_cart = freeTieClip(cart2);
 
-console.log(new_cart);
+add_item_to_cart(new_cart, "shirt", 50, 1);

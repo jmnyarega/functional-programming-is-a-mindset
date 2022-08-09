@@ -15,10 +15,7 @@ export const object_remove = <T>(obj: { [k: string]: T }, k: string) => {
 export const delete_cart_item = (
   cart: ICartObject,
   name: string
-): ICartObject => {
-  if (!contains(cart, name)) return cart;
-  return object_remove(cart, name);
-};
+): ICartObject => (!contains(cart, name) ? cart : object_remove(cart, name));
 
 export const contains = (cart: ICartObject, name: string): boolean =>
   cart.hasOwnProperty(name);
@@ -34,38 +31,24 @@ export const get_free_shipping_with_item = (
   item: TCart
 ): boolean => calc_total(add_item(cart, item)) >= 20;
 
-export const set_price = (item: TCart, price: number): TCart => {
+export const set_field = <V>(
+  item: TCart,
+  field: keyof TCart,
+  value: V
+): TCart => {
   const copy = Object.assign({}, item);
-  copy.price = price;
+  copy[field] = value;
   return copy;
 };
-
-export const set_quantity = (item: TCart, quantity: number): TCart => {
-  const copy = Object.assign({}, item);
-  copy.quantity = quantity;
-  return copy;
-};
-
 export const add_item = (cart: ICartObject, item: TCart): ICartObject =>
   object_set(cart, item.name, item);
 
-export const set_price_by_name = (
+export const set_field_by_name = <T>(
   cart: ICartObject,
   name: string,
-  price: number
-): ICartObject => {
-  const copy = set_price(cart[name], price);
-  return object_set(cart, name, copy);
-};
-
-export const set_price_by_quantity = (
-  cart: ICartObject,
-  name: string,
-  quantity: number
-): ICartObject => {
-  const copy = set_quantity(cart[name], quantity);
-  return object_set(cart, name, copy);
-};
+  field: keyof TCart,
+  value: T
+): ICartObject => object_set(cart, name, set_field(cart[name], field, value));
 
 export const calc_total = (cart: ICartObject) => {
   let total = 0;
