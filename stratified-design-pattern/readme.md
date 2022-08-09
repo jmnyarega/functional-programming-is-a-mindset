@@ -18,7 +18,7 @@
 4. Comfortable layers:
     - The code and its layers of abstraction should feel comfortable to work in.
 
-[Stratified Design](./stratified-design.png)
+![Stratified Design](./stratified-design.png)
 
 - To understand identify layers in our design, identifying inputs/outputs is very important
 - These inputs/outputs will be used as clues to help in classifying the our functions:

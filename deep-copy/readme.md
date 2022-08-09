@@ -18,4 +18,6 @@
 
 #### Defensive Copying
 - This is a discipline where we make deep copies to and from the code that we don't trust.
-[defensive copy](./defensive copying.png)
+
+
+![defensive copy](./defensive-copying.png)
