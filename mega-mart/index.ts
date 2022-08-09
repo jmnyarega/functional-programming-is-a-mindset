@@ -14,15 +14,18 @@ import { IBuyButton, ICart } from "./types";
 
 let shopping_cart: ICart[] = [];
 
-const set_free_shipping_icon = (button: IBuyButton, show: boolean): void => {
+export const set_free_shipping_icon = (
+  button: IBuyButton,
+  show: boolean
+): void => {
   show ? button.show_free_shipping_icon() : button.hide_free_shipping_icon();
 };
 
-const update_tax_dom = (total: number): void => {
+export const update_tax_dom = (total: number): void => {
   set_tax_dom(calc_tax(total));
 };
 
-const update_shipping_icons = (cart: ICart[]): void => {
+export const update_shipping_icons = (cart: ICart[]): void => {
   const buy_buttons: IBuyButton[] = get_buy_buttons_dom();
 
   for (let i = 0; i < buy_buttons.length; i++) {
@@ -34,7 +37,7 @@ const update_shipping_icons = (cart: ICart[]): void => {
   }
 };
 
-const add_item_to_cart = (name: string, price: number): void => {
+export const add_item_to_cart = (name: string, price: number): void => {
   const item = make_cart_item(name, price);
 
   shopping_cart = add_item(shopping_cart, item);
