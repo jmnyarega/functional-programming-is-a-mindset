@@ -7,9 +7,9 @@ import {
   make_cart_item,
 } from "../mega-mart/calculations";
 import { set_cart_total_dom } from "../mega-mart/dom";
-import { ICart } from "../mega-mart/types";
+import { TCart } from "../mega-mart/types";
 
-let shopping_cart: ICart[] = [];
+let shopping_cart: TCart[] = [];
 
 const add_item_to_cart = (name: string, price: number): void => {
   let item = make_cart_item(name, price);
@@ -27,7 +27,7 @@ const add_item_to_cart = (name: string, price: number): void => {
   console.log(new_cart);
 };
 
-const black_friday_promotion = (shopping_cart: ICart[]): ICart[] => {
+const black_friday_promotion = (shopping_cart: TCart[]): TCart[] => {
   shopping_cart[0].price = 9000; // this code mutates our state
   return shopping_cart;
 };

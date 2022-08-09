@@ -1,9 +1,9 @@
 import { add_item, make_cart_item } from "../../mega-mart/calculations";
-import { ICart } from "../../mega-mart/types";
+import { TCart } from "../../mega-mart/types";
 
-const shopping_cart: ICart[] = [
-  { name: "tie", price: 10 },
-  { name: "shirt", price: 40 },
+const shopping_cart: TCart[] = [
+  { name: "tie", price: 10, quantity: 1 },
+  { name: "shirt", price: 40, quantity: 3 },
 ];
 
 const index_of = (array: any[], property: string, item: any): number => {
@@ -26,10 +26,10 @@ const remove_items = (array: any[], startIndex: number, count: number) => {
 };
 
 const set_price_by_name = (
-  cart: ICart[],
+  cart: TCart[],
   name: string,
   price: number
-): ICart[] => {
+): TCart[] => {
   const copy_cart = cart.slice();
   const index = index_of(copy_cart, "name", name);
   const value = { name: copy_cart[index].name, price };
@@ -38,13 +38,13 @@ const set_price_by_name = (
   return copy_cart;
 };
 
-const remove_item_by_name = (cart: ICart[], name: string): ICart[] => {
+const remove_item_by_name = (cart: TCart[], name: string): TCart[] => {
   let index = index_of(cart, "name", name);
   if (index > -1) return remove_items(cart, index, 1);
   return cart;
 };
 
-const freeTieClip = (cart: ICart[]): ICart[] => {
+const freeTieClip = (cart: TCart[]): TCart[] => {
   const hasTie = index_of(cart, "name", "tie");
   const hasTieClip = index_of(cart, "name", "tie clip");
   const tieClip = make_cart_item("tie clip", 5);
@@ -56,7 +56,7 @@ const freeTieClip = (cart: ICart[]): ICart[] => {
   return cart;
 };
 
-const new_cart: ICart[] = set_price_by_name(
+const new_cart: TCart[] = set_price_by_name(
   freeTieClip(shopping_cart),
   "shirt",
   100

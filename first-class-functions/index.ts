@@ -1,13 +1,10 @@
-import {
-  calc_tax,
-  get_shipping_button_item,
-} from "../../mega-mart/calculations";
+import { calc_tax, get_shipping_button_item } from "../mega-mart/calculations";
 import {
   get_buy_buttons_dom,
   set_cart_total_dom,
   set_tax_dom,
-} from "../../mega-mart/dom";
-import { IBuyButton, ICartObject } from "../../mega-mart/types";
+} from "../mega-mart/dom";
+import { IBuyButton, ICartObject } from "../mega-mart/types";
 import {
   contains,
   make_cart_item,
@@ -58,11 +55,7 @@ const freeTieClip = (cart: ICartObject): ICartObject => {
   const hasTieClip = contains(cart, "tie clip");
   const tieClip = make_cart_item("tie clip", 5);
 
-  if (hasTie && hasTieClip) {
-    return add_item(cart, tieClip);
-  }
-
-  return cart;
+  return hasTie && hasTieClip ? add_item(cart, tieClip) : cart;
 };
 
 export const add_item_to_cart = (name: string, price: number): void => {

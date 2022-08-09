@@ -10,9 +10,9 @@ import {
 
 import { get_buy_buttons_dom, set_cart_total_dom, set_tax_dom } from "./dom";
 
-import { IBuyButton, ICart } from "./types";
+import { IBuyButton, TCart } from "./types";
 
-let shopping_cart: ICart[] = [];
+let shopping_cart: TCart[] = [];
 
 export const set_free_shipping_icon = (
   button: IBuyButton,
@@ -25,7 +25,7 @@ export const update_tax_dom = (total: number): void => {
   set_tax_dom(calc_tax(total));
 };
 
-export const update_shipping_icons = (cart: ICart[]): void => {
+export const update_shipping_icons = (cart: TCart[]): void => {
   const buy_buttons: IBuyButton[] = get_buy_buttons_dom();
 
   for (let i = 0; i < buy_buttons.length; i++) {

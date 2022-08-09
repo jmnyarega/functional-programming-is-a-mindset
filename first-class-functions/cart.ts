@@ -1,4 +1,4 @@
-import { ICartObject, TCart } from "../../mega-mart/types";
+import { ICartObject, TCart } from "../mega-mart/types";
 
 export const object_set = <T>(obj: { [k: string]: T }, k: string, v: T) => {
   const copy = Object.assign({}, obj);
