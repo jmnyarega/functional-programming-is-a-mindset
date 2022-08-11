@@ -6,6 +6,8 @@ export const object_set = <T>(obj: { [k: string]: T }, k: string, v: T) => {
   return copy;
 };
 
+const object_keys = (obj: {}) => Object.keys(obj);
+
 export const object_remove = <T>(obj: { [k: string]: T }, k: string) => {
   const copy = Object.assign({}, obj);
   delete copy[k];
@@ -29,7 +31,7 @@ export const make_cart_item = (
 export const get_free_shipping_with_item = (
   cart: ICartObject,
   item: TCart
-): boolean => calc_total(add_item(cart, item)) >= 20;
+): boolean => calc_cart_total(add_item(cart, item)) >= 20;
 
 export const set_field = <V>(
   item: TCart,
@@ -50,12 +52,12 @@ export const set_field_by_name = <T>(
   value: T
 ): ICartObject => object_set(cart, name, set_field(cart[name], field, value));
 
-export const calc_total = (cart: ICartObject) => {
+export const calc_item_total = (item: TCart) => item.price * item.quantity;
+
+export const calc_cart_total = (cart: ICartObject) => {
   let total = 0;
-  const items = Object.keys(cart);
-  for (let i = 0; i < items.length; i++) {
-    const item = items[i];
-    total += cart[item].price * cart[item].quantity;
-  }
+  const items = object_keys(cart);
+  for (let i = 0; i < object_keys(cart).length; i++)
+    total += calc_item_total(cart[items[i]]);
   return total;
 };

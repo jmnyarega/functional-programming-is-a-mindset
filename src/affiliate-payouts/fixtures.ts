@@ -1,4 +1,6 @@
-const affiliate = [
+import { TAffiliate } from "./types";
+
+const affiliate: TAffiliate[] = [
   { sales: 100, commission: 0.15, bank_code: 98789787, owed: 90 },
   { sales: 100, commission: 0.15, bank_code: 98789786, owed: 2 },
   { sales: 100, commission: 0.15, bank_code: 98789788, owed: 20 },

@@ -10,7 +10,7 @@ import {
   make_cart_item,
   add_item,
   set_field_by_name,
-  calc_total,
+  calc_cart_total,
   get_free_shipping_with_item,
 } from "./cart";
 
@@ -67,7 +67,7 @@ export const add_item_to_cart = (
   const item = make_cart_item(name, price, quantity);
 
   const new_cart = add_item(cart, item);
-  const total = calc_total(new_cart);
+  const total = calc_cart_total(new_cart);
 
   set_cart_total_dom(total);
   update_shipping_icons(new_cart);
