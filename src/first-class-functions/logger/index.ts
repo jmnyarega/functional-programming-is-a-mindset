@@ -8,17 +8,27 @@
  */
 
 const user = { name: "user", email: "test@email.com" };
+const products = [user];
 
-const saveUserData = (user: any) => console.log("save user data");
+const saveUserData = (user: any) => undefined;
 const logToSnapErrors = (error: unknown) => console.log("log errors");
 
-// log module
-const withLogging = (f: () => void) => {
-  try {
-    f();
-  } catch (error) {
-    logToSnapErrors(error);
-  }
-};
+const fetchProduct = () => products;
 
-withLogging(() => saveUserData(user));
+// log module
+const withLogging =
+  (f: (...args: any) => void) =>
+  (...args: any) => {
+    try {
+      f(args);
+    } catch (error: unknown) {
+      logToSnapErrors(error);
+    }
+  };
+
+// separating data & functions
+const saveUserDataWithLogging = withLogging(saveUserData);
+const fetchProductWithLogging = withLogging(saveUserData);
+
+saveUserDataWithLogging(user, 090, 909, 0);
+fetchProductWithLogging();
