@@ -26,7 +26,12 @@
 
 ## Problems
 
-- [Coupon email address](./coupon-generator)
-- [Affiliate payouts exercise](./affiliate-payouts/)
-- [MegaMart](./mega-mart/)
-- [Mailing List](./mailing-list/)
+- [Coupon email address](./src/coupon-generator)
+- [Affiliate payouts exercise](./src/affiliate-payouts)
+- [MegaMart](./src/mega-mart)
+- [Mailing List](./src/mailing-list)
+- [copy-on-write](./src/copy-on-write)
+- [coupon generator](./src/coupon-generator)
+- [deep copy](./src/deep-copy)
+- [first class functions](./src/first-class-functions)
+- [stratified design](./src/stratified-design-pattern)
