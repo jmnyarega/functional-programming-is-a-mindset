@@ -1,3 +1,4 @@
+import { foreach } from "../_internals/arrays/_foreach";
 import {
   add_item,
   calc_tax,
@@ -25,16 +26,17 @@ export const update_tax_dom = (total: number): void => {
   set_tax_dom(calc_tax(total));
 };
 
+const update_shipping_icon = (button: IBuyButton, cart: TCart[]) => {
+  const item = get_shipping_button_item(button);
+  const free_shipping = get_free_shipping_with_item(cart, item);
+  set_free_shipping_icon(button, free_shipping);
+};
+
 export const update_shipping_icons = (cart: TCart[]): void => {
   const buy_buttons: IBuyButton[] = get_buy_buttons_dom();
-
-  for (let i = 0; i < buy_buttons.length; i++) {
-    const button = buy_buttons[i];
-    const item = get_shipping_button_item(button);
-    const free_shipping = get_free_shipping_with_item(cart, item);
-
-    set_free_shipping_icon(button, free_shipping);
-  }
+  foreach(buy_buttons, (buy_button: IBuyButton) =>
+    update_shipping_icon(buy_button, cart)
+  );
 };
 
 export const add_item_to_cart = (name: string, price: number): void => {
@@ -46,7 +48,6 @@ export const add_item_to_cart = (name: string, price: number): void => {
   set_cart_total_dom(total);
   update_shipping_icons(shopping_cart);
   update_tax_dom(total);
-  // update buy buttons(cart)
 };
 
 const delete_cart_item = (name: string): void => {
@@ -56,7 +57,6 @@ const delete_cart_item = (name: string): void => {
   set_cart_total_dom(total);
   update_shipping_icons(shopping_cart);
   update_tax_dom(total);
-  // update buy buttons(cart)
 };
 
 add_item_to_cart("milk", 1);

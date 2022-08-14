@@ -1,3 +1,5 @@
+import { filter } from "src/_internals/arrays/_filter";
+
 const emails = [
   "andrew@email",
   "borison@email",
@@ -7,15 +9,6 @@ const emails = [
   undefined,
   "",
 ];
-
-export const filter = (array: string | any[], f: (arg: any) => boolean) => {
-  let new_array = [];
-  for (let i = 0; i < array.length; i++) {
-    const element = array[i];
-    if (f(element)) new_array.push(element);
-  }
-  return new_array;
-};
 
 const isTruthy = (arg: any) => arg;
 const isFalsey = (arg: any) => !arg;

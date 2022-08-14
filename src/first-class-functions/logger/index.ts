@@ -10,12 +10,13 @@
 const user = { name: "user", email: "test@email.com" };
 const products = [user];
 
-const saveUserData = (user: any) => undefined;
+const saveUserData = (user: any) => error;
 const logToSnapErrors = (error: unknown) => console.log("log errors");
 
 const fetchProduct = () => products;
 
 // log module
+// @TODO allows mutliple functions & arguments
 const withLogging =
   (f: (...args: any) => void) =>
   (...args: any) => {

@@ -1,12 +1,4 @@
-export const map = (array: any[], f: (arg: any) => void) => {
-  let new_array = [];
-
-  for (let i = 0; i < array.length; i++) {
-    new_array.push(f(array[i]));
-  }
-
-  return new_array;
-};
+import { map } from "src/_internals/arrays/_map";
 
 const users = (email: string) => ({
   email,

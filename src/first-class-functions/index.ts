@@ -1,3 +1,4 @@
+import { contains } from "../_internals/object/_contains";
 import { calc_tax, get_shipping_button_item } from "../mega-mart/calculations";
 import {
   get_buy_buttons_dom,
@@ -6,7 +7,6 @@ import {
 } from "../mega-mart/dom";
 import { IBuyButton, ICartObject } from "../mega-mart/types";
 import {
-  contains,
   make_cart_item,
   add_item,
   set_field_by_name,
@@ -53,7 +53,7 @@ export const update_shipping_icons = (cart: ICartObject): void => {
 const freeTieClip = (cart: ICartObject): ICartObject => {
   const hasTie = contains(cart, "tie");
   const hasTieClip = contains(cart, "tie clip");
-  const tieClip = make_cart_item("tie clip", 5);
+  const tieClip = make_cart_item("tie clip", 5, 1);
 
   return hasTie && hasTieClip ? add_item(cart, tieClip) : cart;
 };
@@ -76,8 +76,8 @@ export const add_item_to_cart = (
   console.log(new_cart);
 };
 
-const cart1 = set_field_by_name(shopping_cart, "tie", "price", 56);
-const cart2 = set_field_by_name(cart1, "shirt", "quantity", 10);
+const cart1 = set_field_by_name<number>(shopping_cart, "tie", "price", 56);
+const cart2 = set_field_by_name<number>(cart1, "shirt", "quantity", 10);
 
 const new_cart = freeTieClip(cart2);
 

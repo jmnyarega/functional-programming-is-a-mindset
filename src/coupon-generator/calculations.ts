@@ -1,17 +1,20 @@
+import { filter } from "../_internals/arrays/_filter";
+import { map } from "../_internals/arrays/_map";
+import { is_equal } from "../_internals/_isEqual";
 import { TCoupon, TMail, TSubscriber } from "./types";
 
 // calculations defines the business rules for the application
 // Here, decisions are made
-
-export const filterCoupons = (coupons: TCoupon[], rank: string): string[] =>
-  coupons
-    .filter((coupon: TCoupon) => coupon.rank === rank)
-    .map((coupon: TCoupon) => coupon.name);
+export const filterCoupons = (coupons: TCoupon[], rank: string): string[] => {
+  const filtered_coupons: TCoupon[] = filter(
+    coupons,
+    (coupon: TCoupon) => coupon.rank === rank
+  );
+  return map(filtered_coupons, (cpn: TCoupon) => cpn.name);
+};
 
 export const getCouponRank = (subscriber: TSubscriber): string =>
   subscriber.rec_count >= 10 ? "best" : "good";
-
-const hasRank = (rank: string, value: string): boolean => rank === value;
 
 const getEmailBody = (
   body: string,
@@ -19,8 +22,8 @@ const getEmailBody = (
   goods: string[],
   rank: string
 ): string => {
-  if (hasRank(rank, "best")) return `${body} best coupon ${bests.join(",")}`;
-  if (hasRank(rank, "good")) return `${body} good coupon ${goods.join(",")}`;
+  if (is_equal(rank, "best")) return `${body} best coupon ${bests.join(",")}`;
+  if (is_equal(rank, "good")) return `${body} good coupon ${goods.join(",")}`;
   return "";
 };
 
@@ -46,4 +49,6 @@ export const prepareEmails = (
   bests: string[],
   emailTemplate: TMail
 ): TMail[] =>
-  subscribers.map((sub) => generateEmail(sub, goods, bests, emailTemplate));
+  map(subscribers, (sub: TSubscriber) =>
+    generateEmail(sub, goods, bests, emailTemplate)
+  );

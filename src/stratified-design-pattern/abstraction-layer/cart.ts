@@ -1,16 +1,9 @@
+import { calc_item_total } from "../../first-class-functions/cart";
+import { reduce } from "../../_internals/arrays/_reduce";
+import { contains } from "../../_internals/object/_contains";
+import { object_remove } from "../../_internals/object/_remove";
+import { object_set } from "../../_internals/object/_set";
 import { ICartObject, TCart } from "../../mega-mart/types";
-
-export const object_set = <T>(obj: { [k: string]: T }, k: string, v: T) => {
-  const copy = Object.assign({}, obj);
-  copy[k] = v;
-  return copy;
-};
-
-export const object_remove = <T>(obj: { [k: string]: T }, k: string) => {
-  const copy = Object.assign({}, obj);
-  delete copy[k];
-  return copy;
-};
 
 export const delete_cart_item = (
   cart: ICartObject,
@@ -19,9 +12,6 @@ export const delete_cart_item = (
   if (!contains(cart, name)) return cart;
   return object_remove(cart, name);
 };
-
-export const contains = (cart: ICartObject, name: string): boolean =>
-  cart.hasOwnProperty(name);
 
 export const make_cart_item = (
   name: string,
@@ -68,11 +58,10 @@ export const set_price_by_quantity = (
 };
 
 export const calc_total = (cart: ICartObject) => {
-  let total = 0;
   const items = Object.keys(cart);
-  for (let i = 0; i < items.length; i++) {
-    const item = items[i];
-    total += cart[item].price * cart[item].quantity;
-  }
-  return total;
+  return reduce(
+    items,
+    (sum: number, item: string) => (sum += calc_item_total(cart[item])),
+    0
+  );
 };

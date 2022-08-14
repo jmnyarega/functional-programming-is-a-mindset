@@ -6,10 +6,11 @@ import data from "./fixtures";
 //   - global variables
 
 // constant =>  this is an action
-import { emailTemplate } from "./constants";
+import { emailTemplate } from "./data";
 
 import { filterCoupons, prepareEmails } from "./calculations";
 import { TCoupon, TMail, TSubscriber } from "./types";
+import { foreach } from "../_internals/arrays/_foreach";
 
 export const getSubscribers = (): TSubscriber[] => data.subscribers;
 export const getCoupons = (): TCoupon[] => data.coupons;
@@ -26,5 +27,5 @@ export const sendEmail = () => {
     emailTemplate
   );
 
-  emails.forEach((email: TMail) => console.log(email));
+  foreach(emails, (email: TMail) => console.log(email));
 };

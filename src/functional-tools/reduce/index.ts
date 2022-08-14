@@ -1,16 +1,5 @@
-import { object_set } from "../../first-class-functions/cart";
-
-export const reduce = (
-  array: string | any[],
-  f: (acc: any, curr: any, index: any) => void,
-  initial: any | undefined
-) => {
-  let res = initial;
-  for (let i = 0; i < array.length; i++) {
-    res = f(res, array[i], i);
-  }
-  return res;
-};
+import { reduce } from "src/_internals/arrays/_reduce";
+import { object_set } from "src/_internals/object/_set";
 
 const emails_obj = (
   obj: { [x: string]: string },

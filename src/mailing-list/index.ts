@@ -1,18 +1,20 @@
-const mailing_list: string[] = [];
+import { push } from "../_internals/arrays/_push";
 
-// calculations
-const add_element_last = (array: any[], element: any) => {
-  const copy_array = array.slice();
-  copy_array.push(element);
-  return copy_array;
-};
+let mailing_list: string[] = ["asdasd", "asdasd"];
 
 // calculations
 const add_contact = (mailing_list: string[], email: string): string[] =>
-  add_element_last(mailing_list, email);
+  push(mailing_list, email);
 
 // action
 const submit_form_handler = (email: string) => {
-  add_contact(mailing_list, email);
+  mailing_list = add_contact(mailing_list, email);
   console.log(`Adding ${email} to mailing list`);
 };
+
+const init = () => {
+  submit_form_handler("emai@email.com");
+  console.log(mailing_list);
+};
+
+init();

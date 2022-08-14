@@ -1,8 +1,8 @@
 import { IBuyButton } from "./types";
 
-export function set_cart_total_dom(total: number) {
+export const set_cart_total_dom = (total: number) => {
   console.log(`<p> cart-total:  ${total} </p>`);
-}
+};
 
 export const set_tax_dom = (total: number) => {
   console.log(`<p> tax: ${total} </p>`);
