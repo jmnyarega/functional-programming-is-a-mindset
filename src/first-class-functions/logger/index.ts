@@ -7,13 +7,15 @@
  *  }
  */
 
+import compose from "../../_internals/_compose";
+
 const user = { name: "user", email: "test@email.com" };
 const products = [user];
 
-const saveUserData = (user: any) => error;
-const logToSnapErrors = (error: unknown) => console.log("log errors");
+const saveUserData = (user: any) => console.log(user);
+const logToSnapErrors = (error: unknown) => console.log("This is an error!!!");
 
-const fetchProduct = () => products;
+const fetchProduct = () => console.log(products, _);
 
 // log module
 // @TODO allows mutliple functions & arguments
@@ -28,8 +30,12 @@ const withLogging =
   };
 
 // separating data & functions
-const saveUserDataWithLogging = withLogging(saveUserData);
-const fetchProductWithLogging = withLogging(saveUserData);
+const saveUserDataWithLogging = withLogging(
+  compose(saveUserData, saveUserData, saveUserData)
+);
+const fetchProductWithLogging = withLogging(
+  compose(fetchProduct, fetchProduct, fetchProduct)
+);
 
-saveUserDataWithLogging(user, 090, 909, 0);
+saveUserDataWithLogging(user, 90, 909, 0);
 fetchProductWithLogging();
