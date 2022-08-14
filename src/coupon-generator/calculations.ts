@@ -5,12 +5,13 @@ import { TCoupon, TMail, TSubscriber } from "./types";
 
 // calculations defines the business rules for the application
 // Here, decisions are made
+
+export const is_rank = (coupon: TCoupon, rank: string) => coupon.rank === rank;
 export const filterCoupons = (coupons: TCoupon[], rank: string): string[] => {
-  const filtered_coupons: TCoupon[] = filter(
-    coupons,
-    (coupon: TCoupon) => coupon.rank === rank
+  const filtered: TCoupon[] = filter(coupons, (coupon) =>
+    is_rank(coupon, rank)
   );
-  return map(filtered_coupons, (cpn: TCoupon) => cpn.name);
+  return map(filtered, (cpn: TCoupon) => cpn.name);
 };
 
 export const getCouponRank = (subscriber: TSubscriber): string =>
